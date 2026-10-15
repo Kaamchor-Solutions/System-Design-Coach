@@ -17,6 +17,10 @@ For every important statement, classify it:
 
 Never interpret a README promise as proof that runtime behavior works. Prefer code/tests and label documentation-only claims accordingly. A static inspection does not prove performance, production operation, data privacy across the model provider, or live cloud configuration.
 
+### Reconcile conflicting evidence
+
+When documentation, implementation, tests, configuration, or user statements disagree, do not silently choose one as authoritative. Record both claims with precise source locations and the revision/date inspected; check whether version or scope differences explain the mismatch; and state what each source can and cannot establish. Verify current behavior with a safe, focused check when practical, but do not equate a passing test with business correctness—the test may only confirm the behavior currently encoded. If the conflict remains unresolved, preserve it as an explicit risk or open question, explain how it could change the design, and name the smallest next validation and owner/status. Never hide a material contradiction behind a blended summary.
+
 ### New product or feature
 
 Start with the actor, job-to-be-done, current workaround, happy path, failure path, and definition of success. Capture scope, out-of-scope behavior, constraints, supported clients/regions, integrations, ownership, and lifecycle (build, operate, retire). Ask only a few questions at a time and prioritize answers that change the design.

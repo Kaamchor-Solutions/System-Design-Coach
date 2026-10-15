@@ -55,6 +55,29 @@ class SkillPackageTests(unittest.TestCase):
         }
         self.assertTrue(expected.issubset({path.name for path in pack.iterdir()}))
 
+    def test_material_evidence_conflicts_must_be_reconciled_or_preserved(self):
+        workflow = (SKILL_DIR / "references" / "design-workflow.md").read_text(
+            encoding="utf-8"
+        ).lower()
+        gates = (SKILL_DIR / "references" / "quality-gates.md").read_text(
+            encoding="utf-8"
+        ).lower()
+
+        self.assertIn("reconcile conflicting evidence", workflow)
+        self.assertIn("do not silently choose one as authoritative", workflow)
+        self.assertIn("record both claims with precise source locations", workflow)
+        self.assertIn("revision/date inspected", workflow)
+        self.assertIn("version or scope differences", workflow)
+        self.assertIn("what each source can and cannot establish", workflow)
+        self.assertIn("safe, focused check", workflow)
+        self.assertIn("business correctness", workflow)
+        self.assertIn("explicit risk or open question", workflow)
+        self.assertIn("how it could change the design", workflow)
+        self.assertIn("smallest next validation and owner/status", workflow)
+        self.assertIn("material conflicts", gates)
+        self.assertIn("design impact", gates)
+        self.assertIn("validation path", gates)
+
 
 if __name__ == "__main__":
     unittest.main()

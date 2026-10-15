@@ -38,6 +38,7 @@ Use this checklist to find omissions, not to produce a fake objective “archite
 - Each critical requirement maps to an architecture component and a verification activity.
 - Security, load/performance, dependency failure, recovery/restore, and user acceptance checks are planned according to risk.
 - Test evidence states exact command, environment, scope, result, and limitations. Static review, unit tests, benchmarks, production operation, and live AI-provider behavior are not interchangeable.
+- Material conflicts between documentation, implementation, tests, configuration, or user statements are recorded with sources, design impact, and a validation path; none is silently treated as authoritative.
 - Open questions, risks, decisions, and next steps have owners or an explicit statement that ownership is not yet assigned.
 
 ## Readiness decision
