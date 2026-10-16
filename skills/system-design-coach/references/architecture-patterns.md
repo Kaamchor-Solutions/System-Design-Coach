@@ -46,3 +46,4 @@ Introduce asynchronous messaging when the product actually needs work to continu
 3. Operational, cost, security, and failure-mode consequences.
 4. The assumptions and confidence level.
 5. The metric, threshold, or change in product/team needs that would justify revisiting it.
+6. **Reversibility and exit.** State how hard the choice is to change, its migration/exit path and cost, and what evidence should precede deeper commitment. When assumptions are uncertain, prefer a small reversible step; do not defer safeguards needed now for security, privacy, or data integrity.

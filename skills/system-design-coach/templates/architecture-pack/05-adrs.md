@@ -10,6 +10,7 @@ Keep decisions short, dated, and status-labelled: **Proposed**, **Accepted**, **
 - **Decision:** [Specific choice, boundary, and scope]
 - **Alternatives considered:** [At least one viable alternative or why none materially differs]
 - **Consequences:** [Benefits, downsides, security, reliability, operational, cost, migration, and lock-in effects]
+- **Reversibility / exit:** [How hard or costly is this choice to change later? State the migration/exit path, lock-in, or why no viable exit exists.]
 - **Assumptions / confidence:** [What is not verified]
 - **Validation:** [Test or measurement and expected evidence]
 - **Revisit trigger:** [Metric, workload change, team change, product requirement, date, or incident]

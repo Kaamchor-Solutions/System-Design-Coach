@@ -116,6 +116,30 @@ class SkillPackageTests(unittest.TestCase):
         self.assertIn("titles and urls may reveal sensitive interests", example)
         self.assertIn("page code can read browser-local entries", example)
 
+    def test_material_architecture_decisions_record_reversibility_and_exit(self):
+        skill = SKILL_FILE.read_text(encoding="utf-8").lower()
+        patterns = (SKILL_DIR / "references" / "architecture-patterns.md").read_text(
+            encoding="utf-8"
+        ).lower()
+        adrs = (SKILL_DIR / "templates" / "architecture-pack" / "05-adrs.md").read_text(
+            encoding="utf-8"
+        ).lower()
+        gates = (SKILL_DIR / "references" / "quality-gates.md").read_text(
+            encoding="utf-8"
+        ).lower()
+        pilot_adrs = (ROOT / "pilot" / "powerbi-simulator" / "05-adrs.md").read_text(
+            encoding="utf-8"
+        ).lower()
+
+        self.assertIn("reversibility/exit cost", skill)
+        self.assertIn("reversibility and exit", patterns)
+        self.assertIn("small reversible step", patterns)
+        self.assertIn("do not defer safeguards", patterns)
+        self.assertIn("reversibility / exit", adrs)
+        self.assertIn("migration/exit path", adrs)
+        self.assertIn("how hard they are to reverse", gates)
+        self.assertEqual(pilot_adrs.count("reversibility / exit:"), 3)
+
 
 if __name__ == "__main__":
     unittest.main()

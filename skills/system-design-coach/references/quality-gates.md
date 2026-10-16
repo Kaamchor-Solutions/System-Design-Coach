@@ -12,6 +12,7 @@ Use this checklist to find omissions, not to produce a fake objective “archite
 
 - The recommended baseline is the simplest option that meets confirmed requirements.
 - Each major component and technology maps to an actual need; alternatives and rejected complexity are explained.
+- Material choices state how hard they are to reverse, their migration/exit path, and what evidence should precede deeper commitment; necessary security, privacy, and data-integrity safeguards are not deferred.
 - Trust boundaries, API/data ownership, high-value dependencies, and critical paths are clear.
 - HLD, DFD, and LLD agree with each other and with inspected current-state evidence.
 
