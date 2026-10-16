@@ -25,6 +25,8 @@ class SkillPackageTests(unittest.TestCase):
         self.assertTrue((SKILL_DIR / "references" / "architecture-patterns.md").is_file())
         self.assertTrue((SKILL_DIR / "references" / "quality-gates.md").is_file())
         self.assertTrue((SKILL_DIR / "templates" / "architecture-pack" / "README.md").is_file())
+        self.assertTrue((SKILL_DIR / "templates" / "architecture-pack" / "quick-start.md").is_file())
+        self.assertTrue((SKILL_DIR / "templates" / "architecture-pack" / "quick-start-example.md").is_file())
 
     def test_relative_markdown_links_resolve(self):
         link_pattern = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
@@ -77,6 +79,42 @@ class SkillPackageTests(unittest.TestCase):
         self.assertIn("material conflicts", gates)
         self.assertIn("design impact", gates)
         self.assertIn("validation path", gates)
+
+    def test_first_time_builder_has_a_compact_path_and_escalation_rules(self):
+        skill = SKILL_FILE.read_text(encoding="utf-8").lower()
+        pack = SKILL_DIR / "templates" / "architecture-pack"
+        guide = (pack / "README.md").read_text(encoding="utf-8").lower()
+        template = (pack / "quick-start.md").read_text(encoding="utf-8").lower()
+        example = (pack / "quick-start-example.md").read_text(encoding="utf-8").lower()
+
+        self.assertIn("first-time builder path", skill)
+        self.assertIn("at most three questions", skill)
+        self.assertIn("brief risk screen", skill)
+        self.assertIn("early idea is not automatically low-risk", skill)
+        self.assertIn("one-page quick-start note", skill)
+        self.assertIn("expand to the full pack when", skill)
+        self.assertIn("quick-start.md", guide)
+        for requirement in (
+            "aim for one page",
+            "observed facts",
+            "inferences:",
+            "assumptions / unknowns",
+            "smallest useful solution",
+            "where does information go",
+            "security/privacy",
+            "treat titles, urls, names, and metadata as potentially sensitive",
+            "do not infer privacy from local storage",
+            "one acceptance check",
+            "when to expand this note",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, template)
+        self.assertIn("fictional worked example", template)
+        self.assertIn("illustrative only", example)
+        self.assertIn("minimum viable product", example)
+        self.assertIn("not a backup", example)
+        self.assertIn("titles and urls may reveal sensitive interests", example)
+        self.assertIn("page code can read browser-local entries", example)
 
 
 if __name__ == "__main__":

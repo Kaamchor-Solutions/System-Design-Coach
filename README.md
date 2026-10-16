@@ -18,7 +18,7 @@ The skill works for new products, major features, and existing-system architectu
 
 - [`skills/system-design-coach/SKILL.md`](skills/system-design-coach/SKILL.md) — the provider-neutral workflow and trigger metadata.
 - [`skills/system-design-coach/references/`](skills/system-design-coach/references/) — detailed workflow, architecture-pattern guidance, and quality gates.
-- [`skills/system-design-coach/templates/architecture-pack/`](skills/system-design-coach/templates/architecture-pack/) — reusable templates for requirements, HLD, DFD, LLD, decisions, and risk/validation.
+- [`skills/system-design-coach/templates/architecture-pack/`](skills/system-design-coach/templates/architecture-pack/) — includes a plain-language [quick-start note](skills/system-design-coach/templates/architecture-pack/quick-start.md) and [fictional worked example](skills/system-design-coach/templates/architecture-pack/quick-start-example.md), plus full templates for requirements, HLD, DFD, LLD, decisions, and risk/validation.
 - [`pilot/powerbi-simulator/`](pilot/powerbi-simulator/) — a read-only trial on the public Power BI Simulator Skills repository. It is an example design output, not a modification or endorsement of that project.
 - [`tests/`](tests/) and [`.github/workflows/tests.yml`](.github/workflows/tests.yml) — portable package checks and a Python-version CI matrix.
 

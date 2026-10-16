@@ -6,6 +6,8 @@ Use this folder as a starting point for a project-specific design pack. Copy the
 
 | File | Purpose |
 |---|---|
+| `quick-start.md` | Plain-language, one-page design note for an early idea or small, low-risk change |
+| `quick-start-example.md` | Fictional worked example of the compact note, including facts, assumptions, data flow, and limits |
 | `01-prd.md` | Problem, users, requirements, acceptance, constraints, measurable NFRs |
 | `02-hld.md` | Context and component architecture, choices, boundaries and alternatives |
 | `03-dfd.md` | Data sources, flows, stores, processors, trust boundaries and lifecycle |
@@ -13,7 +15,7 @@ Use this folder as a starting point for a project-specific design pack. Copy the
 | `05-adrs.md` | Dated, status-labelled decisions, options, consequences and revisit triggers |
 | `06-operations-risk-validation.md` | Reliability, security, operations, capacity/cost, risk and verification plan |
 
-For a compact tool, a single design note may cover HLD/DFD/LLD, but preserve an explicit PRD baseline and key decisions. Add diagrams only where they reduce ambiguity.
+For a first-time builder, early idea, or small low-risk change, start with `quick-start.md`; keep it short and expand only when a material decision needs more detail. For a compact tool, one note may cover HLD/DFD/LLD, but preserve an explicit requirements baseline and key decisions. Use the full document set for substantial systems or when the user requests implementation-ready depth. Add diagrams only where they reduce ambiguity.
 
 ## Evidence labels
 
