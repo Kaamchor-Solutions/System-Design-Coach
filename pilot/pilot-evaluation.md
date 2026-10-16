@@ -21,8 +21,8 @@
 | Deliver requested artifact categories | PASS | PRD-style requirements, HLD, DFD, LLD, ADRs, risk/security/operations/capacity/validation are present. |
 | Educate a first-time builder | PASS | Human-readable explanation of why no service/queue is warranted and how to identify future triggers. |
 | Avoid invented targets and proof claims | PASS | No SLO, traffic, price, performance, provider privacy, or production claims invented; exact test scope stated. |
-| Validate the source case | PASS with stated limits | Target-scoped suite: 86 passed, 89 subtests, Python 3.12.3. No CI matrix, benchmark, or live LLM evaluation. |
-| Surface contradictions in source evidence | PASS with follow-up | `analyze.py` pins Decimal rounding to `ROUND_HALF_EVEN` and a test verifies independence from ambient modes, while `docs/methods-and-limitations.md` says the active rounding mode is used. This is recorded as R-06; source files were not changed. |
+| Validate the source case | PASS with stated limits | Initial target-scoped suite: 86 passed, 89 subtests, Python 3.12.3; rechecked at upstream SHA `6ba6cced33af1c910b98885c306c879c2a69863f`: full suite again 86 passed/89 subtests; focused rounding test 1 passed/8 subtests. No CI matrix, benchmark, or live LLM evaluation. |
+| Surface contradictions in source evidence | PASS with scoped follow-up | Rechecked upstream main `6ba6cced33af1c910b98885c306c879c2a69863f`: `analyze.py` pins `ROUND_HALF_EVEN`, the ambient-mode test passes (1 test, 8 subtests), and the methods page says active mode (half-even by default). Default CLI behavior aligns; documentation differs for other Python programs importing the helper and setting a custom rounding mode. R-06 remains unresolved; source files were not changed. |
 
 ## Findings and refinements
 
@@ -30,10 +30,10 @@
 2. **A “PRD for an existing repository” must be explicitly qualified.** The pilot labels its requirements as inferred from public docs, not approved by maintainers. This distinction is now part of the pack.
 3. **Test evidence needs environment and collection scope.** An initial workspace-root pytest call collided with other sibling checkouts; targeting the case repository's `tests/` passed. The draft records both, rather than suppressing the issue.
 4. **Portability and user permission must remain explicit.** A pasted repository URL does not guarantee the coding agent can fetch linked references or run code. Public repository creation, code edits, infrastructure, and deployment are distinct from design.
-5. **Source evidence can conflict.** The pilot found a rounding-mode mismatch between helper implementation/tests and a limitations document. The new skill should preserve such conflicts as actionable risks, not silently choose or change the upstream behavior.
+5. **Source evidence can conflict.** The pilot found a rounding-mode contract discrepancy between helper implementation/tests and a limitations document. The new skill should preserve such conflicts as actionable risks, not silently choose or change the upstream behavior.
 6. **Ownership must be explicit.** No maintainer follow-up owner was assigned in this read-only exercise; the pilot risk register records this as unassigned rather than inventing an owner.
 7. **Post-release validation remains.** The release destination and license are settled: [Kaamchor-Solutions/System-Design-Coach](https://github.com/Kaamchor-Solutions/System-Design-Coach), MIT License. Exercise the skill with an actual supported coding-agent host for linked-reference loading and plain-language teaching; this remains future validation, not a claim already proven by the pilot.
 
 ## Overall assessment
 
-This initial public release is not universally validated. The first pilot shows that the document workflow can produce a useful, right-sized design from one mature repository, not that every coding agent will invoke it correctly or consistently. The recorded R-06 rounding discrepancy remains a follow-up against the separate read-only source project and was not fixed by this release.
+This initial public release is not universally validated. The first pilot shows that the document workflow can produce a useful, right-sized design from one mature repository, not that every coding agent will invoke it correctly or consistently. R-06 remains unresolved: default CLI rounding behavior agrees with half-even, but documentation does not clearly describe the fixed behavior for Python programs importing the helper and setting a custom rounding mode. The finding was rechecked against the source revision above; no upstream files were changed.

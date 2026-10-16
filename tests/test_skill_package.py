@@ -140,6 +140,33 @@ class SkillPackageTests(unittest.TestCase):
         self.assertIn("how hard they are to reverse", gates)
         self.assertEqual(pilot_adrs.count("reversibility / exit:"), 3)
 
+    def test_pilot_rounding_finding_is_versioned_and_scope_qualified(self):
+        lld = (ROOT / "pilot" / "powerbi-simulator" / "04-lld.md").read_text(
+            encoding="utf-8"
+        ).lower()
+        risk = (ROOT / "pilot" / "powerbi-simulator" / "06-operations-risk-validation.md").read_text(
+            encoding="utf-8"
+        ).lower()
+        evaluation = (ROOT / "pilot" / "pilot-evaluation.md").read_text(
+            encoding="utf-8"
+        ).lower()
+        result = (ROOT / "pilot" / "PILOT-RESULT.md").read_text(encoding="utf-8").lower()
+
+        for document in (lld, risk, evaluation, result):
+            with self.subTest(document=document[:40]):
+                self.assertIn("6ba6cced33af1c910b98885c306c879c2a69863f", document)
+        self.assertIn("/blob/6ba6cced33af1c910b98885c306c879c2a69863f/scripts/analyze.py#l519-l540", lld)
+        self.assertIn("/blob/6ba6cced33af1c910b98885c306c879c2a69863f/tests/test_analyze.py#l440-l452", lld)
+        self.assertIn("/blob/6ba6cced33af1c910b98885c306c879c2a69863f/docs/methods-and-limitations.md#l16", lld)
+        self.assertIn("test_division_is_independent_of_all_ambient_rounding_modes", lld)
+        self.assertIn("1 test, 8 subtests", lld)
+        self.assertIn("normal standalone command-line run uses half-even", lld)
+        self.assertIn("another python program importing the helper", lld)
+        self.assertIn("custom decimal context", lld)
+        self.assertIn("source remains read-only", risk)
+        self.assertIn("default cli behavior aligns", risk)
+        self.assertIn("04-lld.md#5-failure-and-validation-paths", risk)
+
 
 if __name__ == "__main__":
     unittest.main()
